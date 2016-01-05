@@ -1,0 +1,5 @@
+@media only screen and (max-width: 1026px) {
+    #offset-container {
+        class: col-xs-12;
+    }
+}

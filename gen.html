@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="shortcut icon" href="favicon.ico">
+
+<title>Zack Bleach</title>
+
+<!-- Bootstrap core CSS -->
+<link href="assets/css/bootstrap.css" rel="stylesheet">
+
+
+<!-- Custom styles for this template -->
+<link href="assets/css/main.css" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="assets/js/hover.zoom.js"></script>
+<script src="assets/js/hover.zoom.conf.js"></script>
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<!-- Static navbar -->
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://zackblea.ch">Zack Bleach</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://www.github.com/zackbleach?tab=repositories">Github</a></li>
+                <li><a href="http://www.twitter.com/zackKidd">Twitter</a></li>
+                <li><a href="http://uk.linkedin.com/in/zackbleach">LinkedIn</a></li>
+                <li><a href="http://www.zackblea.ch/cv">CV</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container pt"> 
+    <div id="offset-container" class="col-xs-8 col-xs-offset-2">
+        <div class="row mt">
+            <div class="col-xs-12" id=genetic>
+                <div class="centered">
+                    <h3>Genetic Algorithm</h3>
+                    <hr>
+                </div>
+                <div>
+                    <p>
+                    This is a Javascript implementation of a <a href="http://en.wikipedia.org/wiki/Genetic_algorithm">genetic algorithm</a>
+                    inspired by Richard Dawkin's <a href="http://en.wikipedia.org/wiki/Weasel_program"> Weasel Program</a>,
+                    an excellent demo of which you can find <a href="http://www.youtube.com/watch?v=5sUQIpFajsg&t=4m40s"> here.</a>
+                    </p>
+                </div>
+                <div>
+                    <b>Genetic Algorithm:</b> <span id="output"></span>
+                    <span id="tick" class="glyphicon glyphicon-ok" aria-hidden="true" style="font-size:1em; display:none"></span>
+                </div>
+                <div id="gen-distance" style="display: none;">
+                    Distance: <span id="distance">0</span>
+                </div>
+                <div id="gen-generation" style="display: none;">
+                    Generation: <span id="generation">0</span>
+                </div>
+            </div><!--col-xs-12-->
+            <div class="col-xs-12" id=random>
+                <div>
+                    <b>Random:</b> <span id="randomOutput"> </span>
+                </div>
+                    <div id="random-distance" style="display: none;">
+                        Distance: <span id="randomDistance">0</span>
+                    </div>
+                    <div id="random-generation" style="display: none;">
+                        Generation: <span id="randomGeneration">0</span>
+                    </div>
+            </div><!--col-xs-12-->
+        </div><!--row-->
+        <div class="row" style="margin-top:10px">
+            <div class="col-xs-12">
+                <div class="input-group">
+                    <input id="inputbox" type="text" class="form-control" placeholder="Methinks it is like a weasel">
+                    <span class="input-group-btn">
+                        <button id="evolve-button" class="btn btn-default" type="button">Evolve!</button>
+                    </span>
+                </div><!--input group-->
+            </div><!--col-xs-12-->
+        </div><!--row-->
+        <div class="row" id="controls-show" style="margin-top:15px">
+            <div class="col-xs-12" id="controls-show">
+                <span class="input-group-btn">
+                    <button id="more-options-button" class="btn btn-default btn-xs" type="button">More Options</button>
+                </span>
+            </div>
+        </div>
+            <div class="container" id ="controls-container">
+                <div class="row" id="" style="">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="col-xs-3">
+                                population size: 
+                            </div>
+                            <div class="col-xs-3">
+                                <input id="population-size-input" type="number" class="form-control" placeholder="300">
+                            </div>
+                            <div class="col-xs-3">
+                                mutation rate: 
+                            </div>
+                            <div class="col-xs-3">
+                                <input id="mutation-rate-input" type="number" class="form-control" placeholder="0.1">
+                            </div>
+                        </div>
+                    </div>
+                <div class="row" style="margin-top:10px">
+                    <div class="col-xs-12">
+                        <div class="col-xs-3">
+                            show fitness: 
+                        </div>
+                        <div id="show-fitness" class="col-xs-3">
+                            <input id="fitness-box" type="checkbox">
+                        </div>
+                        <div class="col-xs-3">
+                            show generation:
+                        </div>
+                        <div id="show-generations" class="col-xs-3">
+                            <input id="generations-box" type="checkbox">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--container-->
+
+<div class=container id=text>
+    <div class="col-xs-8 col-xs-offset-2">
+        <p>
+        Above, you can see two algorithms in action. The goal of each is to transform a randomly generated sequence of characters 
+        into the target phrase 'Methinks it is like a weasel'. You can pick your own target phrase by entering some text in to the input box and hitting 'Evolve!'.
+        </p>
+        <p>
+        The Random Algorithm's approach is simple. It generates random sequences of characters of the same length as the target phrase and checks to see if any of them
+        match the target phrase exactly. If one does match, it stops - success! If not, it repeats the process,  generating a new set of random characters and once again
+        checking for an exact match. You can think of it as a set of instructions like this: 
+        </p>
+        <div class="well"  style="font-family:monospace;">
+            <ol style="list-style: decimal inside;">
+                <li>Generate 300 random sequences of characters</li>
+                <li>For each one, count the differences between the generated phrase and the target phrase</li>
+                <li>If any of the counts are 0, finish.</li>
+                <li>If none of the  counts are 0, goto 1.</li>
+            </ol>
+        </div>
+        <p>
+        Step 2, where we count the differences, is often called getting the character sequences 'fitness'. The closer to the target
+        a character sequence is, the more 'fit' we can consider it to be. In the algorithms above, the more 'fit' a population member
+        is, the more green it's color.
+        </p>
+        <p> 
+        The random algorithm continues ad infinitum, or more preciesly, it's likely to take around 700,227,000,000,000,000,000,000,000 years to generate a successfull match!
+        (Asumming the algorithm generates and checks 300 new character sequences every 5ms.)
+        </p>
+        <p>
+        The genetic algorithm takes a more sophisticated approach. It too starts off with generating a set of random character 
+        sequences and counting the differences between them and the target phrase. But then, instead of throwing them all away
+        and generating a new set if none of them match, the genetic algorithm orders the set of character sequences it just 
+        generated according to their fitness (how many differences there are between the sequence and the target phrase).
+        Then, to generate a new set (or generation) of character sequences it combines the fittest members of the previous 
+        generation and with some small chance, randomly changes (or mutates) some of the characters in each sequence.
+        </p>
+        <p>
+        There are lots of different ways you can combine population members. These are usually called 'crossover strategies'. This
+        example takes one character from the first sequence, then a character from the second, then another character from the first,
+         etc. So a comination of the sequences 'aaa' and 'bbb' would be 'aba'.
+
+        <p>
+        As a set of instructions, the genetic algorithm looks like this:
+         <div class="well"  style="font-family:monospace;">
+            <ol style="list-style: decimal inside;">
+                <li>Generate a population of 300 random sequences of characters</li>
+                <li>For each population member, count the differences between the generated phrase and the target phrase</li>
+                <li>If any of the counts are 0, finish.</li>
+                <li>If none of the counts are 0, order the generated phrases by their fitness</li>
+                <li>Until you have 300 new members:
+                    <ol style="list-style: decimal inside;">
+                        <li>Using a probability distribution which gives us a higher chance of picking a fitter member, pick two existing 
+                        population members</li>
+                        <li>Combine those two population members to form a new population member</li>
+                        <li>With some small probability, change some of the characters in the new population member</li>
+                    </ol>
+                </li>
+                <li>Goto 2</li> 
+            </ol>
+        </div>
+        </p>
+        <p>
+        Because we only breed from the fittest memebers of the population each time, every generation brings us closer and closer 
+        to the target phrase. This approach is much, much faster. On average, it takes only a few hundred generations (which it can 
+        generate in seconds) to get to the target phrase.
+        </p>
+        <p>
+        As well as small projects like this, genetic algorithms have been used to <a href="http://www.academia.edu/8251757/Use_of_Genetic_Algorithms_as_an_Innovative_Tool_for_Race_Car_Design">
+            design cars</a>, <a href="http://www.damninteresting.com/on-the-origin-of-circuits/">electronic circuits</a>, and 
+        <a href="http://www.karlsims.com/evolved-virtual-creatures.html">evolve virtual creatures</a>. It's also a neat demonstration
+        of the effectiveness of evolution and natural selection.
+    </div>
+
+</div>
+
+
+<!-- +++++ Footer Section +++++ -->
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h4>Let's Talk</h4>
+                <p>
+                Twitter: <a href="http://www.twitter.com/zackKidd">@zackKidd</a><br/>
+                Email: <a href="mailto:zackbleach@gmail.com"> zackbleach@gmail.com</a><br>
+                Skype: zackbleach
+                </p>
+            </div><!-- /col-lg-4 -->
+
+            <div class="col-lg-4">
+            </div><!-- /col-lg-4 -->
+
+            <div class="col-lg-4">
+            </div><!-- /col-lg-4 -->
+        </div>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- Tracking Code -->
+
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(100739924); }catch(e){}</script>
+<script data-main="assets/genetic-algorithm/app" src="assets/genetic-algorithm/require.js"></script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100739924ns.gif" /></p></noscript>
+
+</body>
+</html>
